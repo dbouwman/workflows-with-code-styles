@@ -1,5 +1,23 @@
 ## Site Manager Workflow, OOP Style
 
+### Narrative
+
+As a Site manager (Paige),
+I want to delegate responsibility for managing Initiatives + Projects to Department managers
+So that they do their work independent of me
+And so they can't change the Site
+
+## Steps
+
+1. View the Site, go to the Site manager
+2. In Site manager, choose to Collaboration / Permissions
+3. Choose the Environmental Department Group and select Permissions: Manage Initiatives, Manage Projects.
+4. Paige indicates that Initiatives + Projects created in the group are searchable in the Site (catalog)
+5. Send a notification to the Group that they now have access and include links to get started
+6. ~Paige receives notifications as Initiatives are created~ moved to when user creates content
+
+## Code
+
 ```js
 // get the site instance
 const site = await HubSite.fetchByDomain(domain, context);
