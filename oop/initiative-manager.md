@@ -32,7 +32,7 @@ And I can oversee their progress + performance
 // create session and context
 // in opendata-ui, this is all done for you, and exposed via appSettings.context
 const session = new UserSession({username: "dave", password: "seekret"});
-const ctxMgr = await ArcGISContextManager.create(session);
+const ctxMgr = await ArcGISContextManager.create({authentication:session});
 const context = ctxMgr.context;
 
 // get the site instance
