@@ -29,6 +29,12 @@ And I can oversee their progress + performance
 ## Code
 
 ```js
+// create session and context
+// in opendata-ui, this is all done for you, and exposed via appSettings.context
+const session = new UserSession({username: "dave", password: "seekret"});
+const ctxMgr = await ArcGISContextManager.create(session);
+const context = ctxMgr.context;
+
 // get the site instance
 const site = await HubSite.fetchByDomain(domain, context);
 
