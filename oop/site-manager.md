@@ -13,15 +13,15 @@ const groups = await hubSearch(...groupQuery...);
 const envDeptGroup = await getGroup('envDeptGroupId', context.requestOptions);
 
 // Associate "addInitiatives" permission to with "Env Dept Group" for Site
-site.addPermission("addInitiative", "group", "envDeptGroupId");
+site.permissions.add("addInitiative", "group", "envDeptGroupId");
 
 // Associate "addProject" permission to with "Env Dept Group" for Site
-site.addPermission("addProject", "group", "envDeptGroupId");
+site.permissions.add("addProject", "group", "envDeptGroupId");
 
 // Add group w/ type subset to item scope in Catalog
 site.catalog.addScopeFilter("item",
   {
-    // key is needed so we can look up the entry to make changes later
+    // key is needed so we can easily look up the entry to make changes later
     // TBD exactly how this key is constructed
     key: "addInitiative:envDeptGroupId",
     predicates: [
@@ -36,5 +36,6 @@ site.catalog.addScopeFilter("item",
 await site.save();
 
 // send notification re: new access - likely additional params
-await site.sendNotification("envDeptGroupId", theMessageBody);
+// Note: .sendNotification is not implemented yet
+await site.notifications.send("envDeptGroupId", theMessageBody);
 ```
